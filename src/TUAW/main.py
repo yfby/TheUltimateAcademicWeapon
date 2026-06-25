@@ -1,19 +1,21 @@
 import os
 
 from dotenv import load_dotenv
-from google import genai
 
-load_dotenv()
-gemini_api_key = os.getenv("GEMINI_API_KEY")
+from .ai_client import AIClient
+
+env_status = load_dotenv()
+
+if not env_status:
+    raise SystemExit("missing .env")
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 
-def main():
-    client = genai.Client(api_key=gemini_api_key)
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents="Explain how to create a basic loop in Python in 3 sentences.",
-    )
-    print(response.text)
+def main() -> None:
+    client = AIClient(api_key=GEMINI_API_KEY, model="gemini-2.5-flash")
+    print(f"AIClient initialized with model: {client.model}")
+    print(client.answer("what is 1+1?"))
 
 
 if __name__ == "__main__":

@@ -8,4 +8,6 @@
 - **AI integration**
 - **Screenshot**
 - **Draw on screen/Paste on clipboard**
-- **Script Installation**
+- **Script installation**
+- **Self destruct**
+- **Hide on the background**
