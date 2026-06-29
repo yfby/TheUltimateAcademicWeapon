@@ -1,7 +1,7 @@
 [project]
 name = "theultimateacademicweapon"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI-powered screenshot solver for academic problems"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
