@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import mss
+from capture import Region
 from PIL import Image
-
-from .capture import Region
 
 
 def capture_region(region: Region) -> Image.Image:

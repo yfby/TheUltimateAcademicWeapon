@@ -1,10 +1,9 @@
 from __future__ import annotations
 
+from config import Config
 from google import genai
 from google.genai import types
 from PIL import Image
-
-from .config import Config
 
 
 class TaskType:
@@ -14,7 +13,9 @@ class TaskType:
     MATH = "math"
 
 
-_TASK_MAP: dict[str, str] = {t: t for t in [TaskType.AUTO, TaskType.QA, TaskType.CODING, TaskType.MATH]}
+_TASK_MAP: dict[str, str] = {
+    t: t for t in [TaskType.AUTO, TaskType.QA, TaskType.CODING, TaskType.MATH]
+}
 
 
 class AIClient:

@@ -2,7 +2,6 @@ import argparse
 import sys
 
 import pyperclip
-
 from ai_client import AIClient
 from capture import select_region
 from config import load_config
@@ -22,7 +21,9 @@ def main() -> None:
 
     try:
         while True:
-            print(f"\n[{config.hotkey.keys}] Hold hotkey + move mouse to select region...")
+            print(
+                f"\n[{config.hotkey.keys}] Hold hotkey + move mouse to select region..."
+            )
             region = select_region(hotkey_str=config.hotkey.keys)
             if region is None:
                 print("Selection cancelled.")
