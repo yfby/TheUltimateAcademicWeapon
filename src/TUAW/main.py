@@ -1,22 +1,21 @@
-import os
+import argparse
 import sys
 
 import pyperclip
-from dotenv import load_dotenv
 
-from .ai_client import AIClient
-from .capture import select_region
-from .config import load_config
-from .screenshot import capture_region
+from ai_client import AIClient
+from capture import select_region
+from config import load_config
+from screenshot import capture_region
 
 
 def main() -> None:
-    env_status = load_dotenv()
-    if not env_status:
-        raise SystemExit("missing .env")
+    parser = argparse.ArgumentParser(description="AI-powered screenshot solver")
+    parser.add_argument("--api-key", required=True, help="Gemini API key")
+    args = parser.parse_args()
 
     config = load_config()
-    client = AIClient(api_key=os.getenv("GEMINI_API_KEY"), config=config)
+    client = AIClient(api_key=args.api_key, config=config)
     print(f"AIClient initialized with model: {client.model}")
     print(f"Listening for {config.hotkey.keys}... (press Ctrl+C to quit)")
     pyperclip.copy(config.clipboard_indicators.initialized)
