@@ -17,7 +17,7 @@ class ClipboardIndicators:
 
 @dataclass
 class AIConfig:
-    model: str = "gemini-2.5-flash"
+    model: str = "gemini-3.8-flash"
     temperature: float = 0.2
     default_task: str = "auto"
     default_language: str | None = None
@@ -95,7 +95,9 @@ def load_config(path: str | Path | None = None) -> Config:
             raw = json.load(f)
 
     config = Config(
-        clipboard_indicators=_build(ClipboardIndicators, raw.get("clipboard_indicators", {})),
+        clipboard_indicators=_build(
+            ClipboardIndicators, raw.get("clipboard_indicators", {})
+        ),
         ai=_build(AIConfig, raw.get("ai", {})),
         hotkey=_build(HotkeyConfig, raw.get("hotkey", {})),
         prompts=_build_prompts_config(raw.get("prompts", {})),
